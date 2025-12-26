@@ -1,7 +1,7 @@
 import sqlite3
 import openpyxl
 
-class ConsoleNotesApp:
+class ConsoleNotesApp():
     def __init__(self):
         self.conn = sqlite3.connect('notes.db')
         self.cursor = self.conn.cursor()
@@ -184,7 +184,8 @@ class ConsoleNotesApp:
             print("5. Поиск заметок")
             print("6. Экпортировать заметки в excel")
             print("7. Другое")
-            print("8. Выход")
+            print("8. Назад")
+            print("9. Выход")
 
             choice = input('Выберите действие: ').strip()
             if choice == '1':
@@ -214,6 +215,8 @@ class ConsoleNotesApp:
                 self.other()
 
             elif choice == '8':
+                return
+            elif choice == '9':
                 self.close()
                 print("Выход из программы...")
                 break
@@ -253,9 +256,10 @@ class ConsoleNotesApp:
         wb.save(filename)
         print(f"Данные добавлены в {filename}")
 
-app = ConsoleNotesApp()
-try:
-    app.run()
-except KeyboardInterrupt:
-    print("\n\nПрограмма завершена пользователем.")
-    app.close()
+if __name__ == "__main__":
+    app = ConsoleNotesApp()
+    try:
+        app.run()
+    except KeyboardInterrupt:
+        print("\n\nПрограмма завершена пользователем.")
+        app.close()
