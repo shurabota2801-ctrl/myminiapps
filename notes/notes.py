@@ -216,6 +216,7 @@ class ConsoleNotesApp():
 
             elif choice == '8':
                 return
+            
             elif choice == '9':
                 self.close()
                 print("Выход из программы...")
