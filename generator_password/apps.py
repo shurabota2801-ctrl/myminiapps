@@ -6,7 +6,7 @@ LOWER_LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 PUNCTUATION = '!#$%&*+-=?@^_'
 AMBIGUOUS = 'il1Lo0O'
 
-class Generate_password():
+class Generator_Password():
     def params(self):
         questions = ["Включать ли цифры 0123456789", 
                      "Включать ли прописные буквы ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -34,13 +34,17 @@ class Generate_password():
                     selected_chars += answers[i]
         return selected_chars, length, count_password
     
-    def gen_pass(self, selected_chars, length, count_password):
-        print(selected_chars, length, count_password)
+    def generate_password(self, selected_chars, length, count_password):
+        ls_password = []
+        for i in range(count_password):
+            password = ''
+            for j in range(length):
+                password += choice(selected_chars)
+            ls_password.append(password)
+        return ls_password
 
     def menu(self):
         print("Привет, я генератор паролей!")
         selected_chars, length, count_password = self.params()
-        self.gen_pass(selected_chars, length, count_password)
-
-a = Generate_password()
-a.menu()
+        password = self.generate_password(selected_chars, length, count_password)
+        print(*password, sep='\n')
