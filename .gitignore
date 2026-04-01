@@ -5,3 +5,4 @@ __pycache__/
 *.db
 db.sqlite3
 *.xlsx
+*.DS_Store
